@@ -1,0 +1,26 @@
+#include "libft.h"
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	long	num;
+	char	c;
+
+	num = n;
+	if (num < 0)
+	{
+		write(fd, "-", 1);
+		num = -num;
+	}
+	if (num > 9)
+		ft_putnbr_fd(num / 10, fd);
+	c = num % 10 + '0';
+	write(fd, &c, 1);
+}
+
+/* int	main(void)
+{
+	int	i = -52;
+
+	ft_putnbr_fd(i, 1);
+	return (0);
+} */
